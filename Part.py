@@ -47,6 +47,11 @@ class Part:
             result += part.get_num_transistors()
         return result
 
+    def evaluate(self):
+        for part in self.parts:
+            part.evaluate()
+
+
 
 class Nand(Part):
     def __init__(self):
@@ -58,3 +63,7 @@ class Nand(Part):
         self.inputs = [InputPin("in1"), InputPin("in2")]
         self.outputs = [OutputPin("out")]
         self.n_transistor = 1
+
+    def evaluate(self):
+        self.outputs[0].set_value(
+            not (self.inputs[0].value and self.inputs[1].value))

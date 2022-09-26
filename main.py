@@ -80,8 +80,12 @@ def main():
     part_dict: Dict[str, Part] = {}
     part_dict["NAND"] = Nand()
     read_from_file("NOT.dc", part_dict)
-    print(part_dict)
-    print(part_dict['NOT'].get_num_transistors())
+    nand = part_dict['NAND']
+    Not = part_dict['NOT']
+    Not.set_input_pin_values([True])
+    Not.evaluate()
+    print(Not.get_output_pin_values())
 
 
-main()
+if __name__ == '__main__':
+    main()

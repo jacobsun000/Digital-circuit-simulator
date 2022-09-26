@@ -7,6 +7,9 @@ class Pin:
         self.connected_pins: List[Pin] = []
         self.value = False
 
+    def __repr__(self):
+        return self.name
+
     def connect(self, pin):
         self.connected_pins.append(pin)
 
@@ -14,7 +17,7 @@ class Pin:
         if self.value == value:
             return
 
-        self.value = value if is_source else self.value | value
+        self.value = value
 
         for pin in self.connected_pins:
             pin.set_value(value, False)
