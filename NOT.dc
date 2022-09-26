@@ -1,0 +1,8 @@
+Inputs: in;
+Outputs: out;
+Parts:
+  myNand NAND;
+Wires:
+  in -> myNand.in1,
+  1 -> myNand.in2,
+  myNand.out -> out;
